@@ -3,8 +3,29 @@ CLAP learning project (Rust CLI App)
 
 [CLAP crate](https://docs.rs/clap/latest/clap/index.html).
 
+# Run note:
+`cargo run --quiet -- <ARGS>`  
+e.g.  
+```shell
+cargo run --quiet -- --help
+```
+or  
+```shell
+cargo run --quiet -- Bob_Simmons --config ~\
+```
 
-Notes:
+produce an error (which is colored):
+```shell
+cargo run --quiet --
+```
+^ Note: only works because we made an (the) argument required  
+
+get *runtime* syntax highlighting and output colloring using `bat`:  
+```shell
+cargo run --quiet -- --help | bat --plain --language=help
+```
+
+# Notes:
 CLAP v4 *no longer* supports color output. (neither by default nor specification)  
 [it may, at some point, allowd color specification; but undetermined future and still won't be a default]  
 

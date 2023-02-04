@@ -71,5 +71,5 @@ fn main() {
 }
 
 fn name_print_command(name: &str) {
-    println!("Hello, {}!", name);
+    println!("Hello, {name}!");
 }
