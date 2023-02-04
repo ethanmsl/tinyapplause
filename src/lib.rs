@@ -24,6 +24,33 @@ pub fn add(left: usize, right: usize) -> usize {
     left + right
 }
 
+/// Usually doc comments may include sections "Examples", "Panics" and "Failures".
+///
+/// The next function divides two numbers.
+///
+/// # Examples
+///
+/// ```
+/// let result = tinyapplause::div(10, 2);
+/// assert_eq!(result, 5);
+/// ```
+///
+/// # Panics
+///
+/// The function panics if the second argument is zero.
+///
+/// ```rust,should_panic
+/// // panics on division by zero
+/// tinyapplause::div(10, 0);
+/// ```
+pub fn div(a: i32, b: i32) -> i32 {
+    if b == 0 {
+        panic!("Divide-by-zero error");
+    }
+
+    a / b
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
