@@ -13,7 +13,8 @@
 ///
 /// The next lines present detailed documentation. Code blocks start with
 /// triple backquotes and have implicit `fn main()` inside
-/// and `extern crate <cratename>`. Assume we're testing `doccomments` crate:
+/// and `extern crate <cratename>`.
+/// Note: this requires referencing our cratename (`tinyapplause`)
 ///
 /// ```
 /// let result = tinyapplause::add(2, 3);
