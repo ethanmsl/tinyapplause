@@ -3,13 +3,15 @@ use std::path::PathBuf;
 use clap::{Parser, Subcommand};
 
 #[derive(Parser)]
-#[command(author, version, about, long_about = None)]
-struct Cli {
-    /// Optional name to operate on
-    name: Option<String>,
+#[command(author, version, about, long_about = "boopsy-bospy-kimklam")]
+struct Whatever {
+    /// req'd name to operate on
+    name: String,
 
+    // `arg` apparently means "flag" and not an actual argument
+    // (WTF?! on the naming)
     /// Sets a custom config file
-    #[arg(short, long, value_name = "FILE")]
+    #[arg(long, value_name = "FILE")]
     config: Option<PathBuf>,
 
     /// Turn debugging information on
@@ -31,11 +33,12 @@ enum Commands {
 }
 
 fn main() {
-    let cli = Cli::parse();
+    let cli = Whatever::parse();
 
     // You can check the value provided by positional arguments, or option arguments
-    if let Some(name) = cli.name.as_deref() {
-        println!("Value for name: {name}");
+    let name = cli.name;
+    {
+        name_print_command(&name);
     }
 
     if let Some(config_path) = cli.config.as_deref() {
@@ -65,4 +68,8 @@ fn main() {
     }
 
     // Continued program logic goes here...
+}
+
+fn name_print_command(name: &str) {
+    println!("Hello, {}!", name);
 }
