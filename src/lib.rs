@@ -20,7 +20,7 @@
 /// let result = tinyapplause::add(2, 3);
 /// assert_eq!(result, 5);
 /// ```
-pub fn add(left: usize, right: usize) -> usize {
+pub fn add(left: i32, right: i32) -> i32 {
     left + right
 }
 
