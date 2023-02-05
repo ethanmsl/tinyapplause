@@ -13,3 +13,4 @@ authors = ["Ethan Skowronski-Lutz <33399972+ethanmsl@users.noreply.github.com>"]
 
 [dependencies]
 clap = { version = "4.1.4", features = ["derive"] }
+inquire = "0.5.3"
