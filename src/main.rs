@@ -1,11 +1,23 @@
+// disable clippy lint prevent a lint from running
+#![allow(clippy::uninlined_format_args)]
 use clap::{Parser, Subcommand};
 
 #[derive(Parser)]
-#[command(author, version, about, long_about = "boopsy-bospy-kimklam")]
+#[command(name = "tinyApplause")]
+#[command(about = "does some random things")]
+#[command(long_about = "boopsy-bospy-kimklam")]
+#[command(version)]
+// #[command(next_line_help=true)]
 struct BaseArgs {
+    /// god this sucks
+    name: Vec<String>,
+
     /// install support cli
     #[arg(long, value_name = "Install")]
     to_install: bool,
+
+    #[arg(long)]
+    numbs: Option<u32>,
 
     /// subcomzzz
     #[command(subcommand)]
@@ -18,11 +30,11 @@ enum SubCmnds {
     /// just chatty
     TellMeThings {
         /// heroine name
-        #[arg(long)]
-        heroine: String,
+        #[arg(short = 'n', long)]
+        heroine: Vec<String>,
 
         /// hero name
-        #[arg(long)]
+        #[arg(long = "gyro")]
         hero: String,
     },
 }
@@ -37,11 +49,19 @@ fn main() {
         println!(":) :) :) :) :)");
     }
 
+    if !cli.name.is_empty() {
+        println!("name: {:?}", cli.name);
+    }
+
+    if let Some(numbs) = cli.numbs {
+        println!("numbs: {}", numbs);
+    }
+
     if let Some(subcommand) = cli.subcommand {
         match subcommand {
             SubCmnds::TellMeThings { heroine, hero } => {
-                println!("heroine: {heroine}");
-                println!("hero: {hero}");
+                println!("heroine: {heroine:?}");
+                println!("hero: {:?}", hero);
             }
         }
     }
